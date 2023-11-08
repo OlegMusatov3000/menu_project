@@ -1,13 +1,12 @@
-import os, sys
 from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-4rc0em$3&0@#xxzji5f-3ii&w3i^!9peyj0caiu8x*f&*7eol*'
+SECRET_KEY = 'django-insecure-(j+9l6c*vzf+j%_v-6j=x3@ertck1+5w#8hwfz+#_lv$emm-5f'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,7 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'menu.apps.MenuConfig'
+    'menu.apps.MenuConfig',
 ]
 
 MIDDLEWARE = [
@@ -31,11 +30,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'menu_project.urls'
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -53,7 +51,7 @@ WSGI_APPLICATION = 'menu_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -72,18 +70,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'ru-RU'
-
-TIME_ZONE = 'Asia/Tomsk'
-
+LANGUAGE_CODE = 'ru'
+TIME_ZONE = 'Europe/Moscow'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-
-STATIC_URL = '/static/'
-STATIC_DIRS = os.path.join(BASE_DIR, 'static')
+STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
